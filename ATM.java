@@ -3,13 +3,17 @@ package project;
 public class ATM {
     private boolean access = false;
     private Card currentCard;
+    private boolean cardIn = false;
 
     public void insertCard(Card newCard) {
+        if (!cardIn) {
             currentCard = newCard;
+            cardIn = true;
+        }
     }
 
     public void enterPIN(int PIN) {
-        if (currentCard.checkPIN(PIN)) {
+        if (currentCard.getCardPIN() == PIN) {
             access = true;
             System.out.println("Доступ разрешён");
         } else {
@@ -50,5 +54,9 @@ public class ATM {
         }
     }
 
+    public void cardTakeOut() {
+        access = false;
+        cardIn = false;
+    }
 
 }

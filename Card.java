@@ -9,12 +9,8 @@ public class Card {
         this.Balance = Balance;
     }
 
-    public boolean checkPIN(int PIN) {
-        if (PIN == CardPIN) {
-            return true;
-        } else {
-            return false;
-        }
+    public int getCardPIN() {
+        return CardPIN;
     }
 
     public int getBalance() {
