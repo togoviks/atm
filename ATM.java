@@ -22,35 +22,44 @@ public class ATM {
     }
 
     public void checkBalance() {
-        if (access) {
-            System.out.println("Текущий баланс: " + currentCard.getBalance());
-        } else {
+        if (!access) {
             System.out.println("Доступ запрещён");
+            return;
         }
-    }
+        System.out.println("Текущий баланс: " + currentCard.getBalance());
+        }
 
     public void addToBalance(int sum) {
-        if (access) {
+        if (!access) {
+            System.out.println("Доступ запрещён");
+            return;
+        }
             int newBalance = currentCard.getBalance() + sum;
             currentCard.receiveBalance(newBalance);
             System.out.println("Баланс пополнен на " + sum + " рублей, текущий баланс: " + newBalance);
-        } else {
-            System.out.println("Доступ запрещён");
-        }
     }
 
     public void takeOffBalance(int sum) {
-        if (access && currentCard.getBalance() >= sum) {
+        if (!access && checkCardBalance(sum)) {
             int newBalance = currentCard.getBalance() - sum;
             currentCard.receiveBalance(newBalance);
             System.out.println("Со счёта списано " + sum + " рублей, текущий баланс: " + newBalance);
         } else {
             if (!access) {
                 System.out.println("Доступ запрещён");
+                return;
             }
-            if (currentCard.getBalance() < sum) {
+            if (checkCardBalance(sum)) {
                 System.out.println("Недостаточно средств");
             }
+        }
+    }
+
+    private boolean checkCardBalance(int sum) {
+        if (currentCard.getBalance() > sum) {
+            return true;
+        } else {
+            return false;
         }
     }
 
