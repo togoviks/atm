@@ -1,24 +1,24 @@
 package project;
 
 public class Card {
-    private int CardPIN;
-    private int Balance;
+    private int cardPIN;
+    private int balance;
 
     public Card(int CardPIN, int Balance) {
-        this.CardPIN = CardPIN;
-        this.Balance = Balance;
+        this.cardPIN = CardPIN;
+        this.balance = Balance;
     }
 
     public int getCardPIN() {
-        return CardPIN;
+        return cardPIN;
     }
 
     public int getBalance() {
-        return Balance;
+        return balance;
     }
 
     public void receiveBalance(int newBalance) {
-        Balance = newBalance;
+        balance = newBalance;
     }
 
 }

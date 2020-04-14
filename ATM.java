@@ -40,7 +40,10 @@ public class ATM {
     }
 
     public void takeOffBalance(int sum) {
-        if (!access && checkCardBalance(sum)) {
+        if (!access) {
+            return;
+        }
+        if (checkCardBalance(sum)) {
             int newBalance = currentCard.getBalance() - sum;
             currentCard.receiveBalance(newBalance);
             System.out.println("Со счёта списано " + sum + " рублей, текущий баланс: " + newBalance);
@@ -56,11 +59,7 @@ public class ATM {
     }
 
     private boolean checkCardBalance(int sum) {
-        if (currentCard.getBalance() > sum) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentCard.getBalance() > sum;
     }
 
     public void cardTakeOut() {
