@@ -1,8 +1,13 @@
 package project;
 
 public class Card {
-    private int CardPIN = 1234;
-    private int Balance = 100;
+    private int CardPIN;
+    private int Balance;
+
+    public Card(int CardPIN, int Balance) {
+        this.CardPIN = CardPIN;
+        this.Balance = Balance;
+    }
 
     public boolean checkPIN(int PIN) {
         if (PIN == CardPIN) {

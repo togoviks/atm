@@ -4,9 +4,7 @@ public class ATM {
     private boolean access = false;
     private Card currentCard;
 
-    public void insertCard(int PIN) {
-        Card newCard = new Card();
-
+    public void insertCard(Card newCard, int PIN) {
         if (newCard.checkPIN(PIN)) {
             access = true;
             System.out.println("Доступ разрешён");
