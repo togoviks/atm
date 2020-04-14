@@ -7,5 +7,6 @@ public class Application {
         newATM.checkBalance();
         newATM.addToBalance(50);
         newATM.takeOffBalance(100);
+
     }
 }
